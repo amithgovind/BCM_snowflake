@@ -1,2 +1,2 @@
 # BCM_snowflake
-scripts for business continuity manager on snwoflake
+scripts for business continuity management on snowflake

@@ -47,7 +47,7 @@ CREATE or replace STORAGE INTEGRATION s3_integration_new_account
     TYPE = EXTERNAL_STAGE
     STORAGE_PROVIDER = S3
     ENABLED = TRUE
-    STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::990923145544:role/snowflake_failover_testing'
+    STORAGE_AWS_ROLE_ARN = 'xxx'
     STORAGE_ALLOWED_LOCATIONS = ('s3://snowflake-testing-ag-bucket/');
 --for security reasons, if you create a new storage integration (or recreate an existing storage integration using the CREATE OR REPLACE STORAGE INTEGRATION syntax) without specifying an external ID, the new integration has a different external ID and can’t resolve the trust relationship unless you update the trust policy.
 
@@ -66,7 +66,7 @@ CREATE or replace STAGE snowpipe_db.public.s3_stage
 
 CREATE or replace PIPE snowpipe_db.public.pipe_s3_test
   AUTO_INGEST = TRUE
-  AWS_SNS_TOPIC='arn:aws:sns:eu-north-1:990923145544:sns_snowflake_test'
+  AWS_SNS_TOPIC='yyy'
   AS
     COPY INTO snowpipe_db.public.pipe_s3_test_table
       FROM @snowpipe_db.public.s3_stage
@@ -262,8 +262,8 @@ $$;
   DIRECTION = OUTBOUND
   TYPE = QUEUE
   NOTIFICATION_PROVIDER = AWS_SNS
-  AWS_SNS_TOPIC_ARN = 'arn:aws:sns:eu-north-1:990923145544:sns_snowflake_test'
-  AWS_SNS_ROLE_ARN = 'arn:aws:iam::990923145544:role/snowflake_sns_test_role';
+  AWS_SNS_TOPIC_ARN = 'xxx'
+  AWS_SNS_ROLE_ARN = 'yyy';
 
   -- Create a test task that will fail to test notification integration
 CREATE OR REPLACE TASK test_task
